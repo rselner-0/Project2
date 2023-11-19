@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <cmath>
-//#define DEBUG
 
 using namespace std;
 
@@ -42,7 +41,6 @@ int main()
 			cout << "again?\n\ny/n: ";
 			cin >> response;
 		}
-		
 		if (response != 'n')
 		{
 			if (response == 'y')
@@ -51,17 +49,13 @@ int main()
 				if (c.game_number == 1)
 				{
 					cout << "\n\nYou chose single number style!\n";
-
 					game_1(&c);
-					
 					cout << endl << endl;
 				}
 				else if (c.game_number == 2)
 				{
 					cout << "\n\nYou chose base chart style!\n";
-
 					game_2(&c);
-
 					cout << endl << endl;
 					c.number_of_times_played++;
 				}
@@ -207,19 +201,6 @@ double kaprekate(container* c, int array[])
 	else
 	{
 		sort_array(digits);
-#ifdef DEBUG
-	if (c->game_number == 1)
-	{
-		cout << "\nsorted array: ";
-
-		for (int j = 0; j < 4; j++)
-		{
-			cout << digits[j] << " ";
-		}
-		cout << "\nEnd Debug.\n\n";
-	}
-
-#endif
 		array[c->counter] = digits[0] * pow(c->whole_base, 3) + digits[1] * pow(c->whole_base, 2) + digits[2] * c->whole_base + digits[3];
 		int largest_value = digits[3] * pow(c->whole_base, 3) + digits[2] * pow(c->whole_base, 2) + digits[1] * c->whole_base + digits[0];
 		int difference = largest_value - array[c->counter];
@@ -230,19 +211,6 @@ double kaprekate(container* c, int array[])
 			difference /= c->whole_base;
 		}
 		sort_array(digits);
-#ifdef DEBUG
-		if (c->game_number == 1)
-		{
-		cout << "array[" << c->counter << "] = " << array[c->counter] << "\n";
-		cout << "\n2nd sorted array: ";
-
-		for (int j = 0; j < 4; j++)
-		{
-			cout << digits[j] << " ";
-		}
-		cout << "\nEnd 2nd Debug.\n\n";
-	}
-#endif
 		int smallest_value = digits[0] * pow(c->whole_base, 3) + digits[1] * pow(c->whole_base, 2) + digits[2] * c->whole_base + digits[3];
 		for (int l = 0; l < c->counter + 1; l++)
 		{
