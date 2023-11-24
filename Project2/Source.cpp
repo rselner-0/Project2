@@ -1,9 +1,7 @@
 //Project2.cpp
 //This project is the kaprekar function brought to all bases, displaying the k-number and loop length number as k.l for the table.
-
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 
 struct container
@@ -85,7 +83,6 @@ int main()
 	}
 	return 0;
 }
-
 void get_input_pt_1(container* c)
 {
 	bool flag_repeat = true;
@@ -103,11 +100,10 @@ void get_input_pt_1(container* c)
 		}
 	}
 }
-
 void game_2(container* c)
 {
 	int array[32] = {};
-	cout << "\nChoose the positive whole-number base value (less than 20) that you want to view the chart for\n";
+	cout << "\nChoose the positive whole-number base value that you want to view the chart for\n";
 	cout << "Note: Larger bases have longer charts, so after a certain base number the beginning will be lost after the program ends.\n\nbase: ";
 	cin >> c->base_value;
 	c->whole_base = floor(c->base_value);
@@ -132,7 +128,6 @@ void game_2(container* c)
 		cout << "\n\n";
 	}
 }
-
 void game_1(container* c)
 {
 	cout << "\nBegin by choosing a positive whole-number base value: ";
@@ -140,9 +135,7 @@ void game_1(container* c)
 	c->whole_base = floor(c->base_value);
 	cout << "\n\nNow enter the number you wish to analyze: ";
 	cin >> c->value;
-	
 	c->whole_number = floor(c->value);
-	
 	if (c->whole_number >= pow(c->base_value, 4))
 	{
 		cout << "\nNumber is a bit too large for the chosen base, so that doesn't count.\n\n";
@@ -160,11 +153,9 @@ void game_1(container* c)
 		c->not_same = true;
 	}
 }
-
 void sort_array(int digits[])
 {
-	int temp_var = 0;
-	int smallest_value = 0;
+	int temp_var = 0; int smallest_value = 0;
 	for (int i = 0; i < 4; i++)
 	{
 		int smallest_index = i;
@@ -183,7 +174,6 @@ void sort_array(int digits[])
 		}
 	}
 }
-
 double kaprekate(container* c, int array[])
 {
 	int digits[4] = {0, 0, 0, 0};
@@ -201,6 +191,15 @@ double kaprekate(container* c, int array[])
 	else
 	{
 		sort_array(digits);
+		if (c->game_number == 1)
+		{
+			cout << "\narray[" << c->counter << "] = ";
+			for (int i = 0; i < 4; i++)
+			{
+				cout << digits[i] << " ";
+			}
+			cout << "\n";
+		}
 		array[c->counter] = digits[0] * pow(c->whole_base, 3) + digits[1] * pow(c->whole_base, 2) + digits[2] * c->whole_base + digits[3];
 		int largest_value = digits[3] * pow(c->whole_base, 3) + digits[2] * pow(c->whole_base, 2) + digits[1] * c->whole_base + digits[0];
 		int difference = largest_value - array[c->counter];
@@ -211,6 +210,15 @@ double kaprekate(container* c, int array[])
 			difference /= c->whole_base;
 		}
 		sort_array(digits);
+		if (c->game_number == 1)
+		{
+			cout << "\nnew_array[" << c->counter << "] = ";
+			for (int j = 0; j < 4; j++)
+			{
+				cout << digits[j] << " ";
+			}
+			cout << "\n";
+		}
 		int smallest_value = digits[0] * pow(c->whole_base, 3) + digits[1] * pow(c->whole_base, 2) + digits[2] * c->whole_base + digits[3];
 		for (int l = 0; l < c->counter + 1; l++)
 		{
