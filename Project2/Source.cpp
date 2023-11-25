@@ -45,9 +45,9 @@ int main()
 					c.number_of_times_played++;
 				}
 				else if (c.game_number == 0) { response = 'n';}
-				}
-			else { cout << "\n\nNot a choice, just pick y or n...\n" << endl;}
 			}
+			else { cout << "\n\nNot a choice, just pick y or n...\n" << endl;}
+		}
 		if (response == 'n')
 		{
 			cout << "\nPlayed " << c.number_of_times_played;
@@ -69,8 +69,8 @@ void get_input_pt_1(container* c)
 			flag_repeat = false;
 		}
 		else {cout << "\n\nI'm afraid that just isn't an option.. try again.\n";}
-		}
 	}
+}
 void game_2(container* c)
 { int array[32] = {};
 	cout << "\nChoose the positive whole-number base value that you want to view the chart for\n";
@@ -127,7 +127,7 @@ void sort_array(int digits[])
 		for (int j = i + 1; j < 4; j++)
 		{
 			if (digits[j] < digits[smallest_index]) { smallest_index = j;}
-			}
+		}
 		if (smallest_index != i)
 		{ temp_var = digits[i];
 			digits[i] = digits[smallest_index];
