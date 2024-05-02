@@ -3,12 +3,12 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-struct container
+struct container //This will hold our variables which get used throughout the program.
 {
-	bool not_same = true;
-	double value = 0;
-	double base_value = 0;
-	int counter = 0;
+	bool not_same = true;	//A boolean variable set to be true until proven false by the presence of at least two identical arrays.
+	double value = 0;		//A double variable to hold the user input of the number to be analyzed (for single number style).
+	double base_value = 0; //A double variable to hold the user input of the base value.
+	int counter = 0;		//The variable which stores the k-number (or how many times the kaprekate function enters recursion.)
 	int number_of_times_played = 0;
 	int game_number = 0;
 	int whole_base = 0;
@@ -145,7 +145,9 @@ double kaprekate(container* c, int array[])
 	}
 	if (digits[0] == digits[1] && digits[1] == digits[2] && digits[2] == digits[3]) { c->loop_length = 0; return 0;}
 	else
-	{ sort_array(digits);
+	{
+		c->counter++;
+		sort_array(digits);
 		if (c->game_number == 1)
 		{
 			cout << "\narray[" << c->counter << "] = ";
@@ -184,7 +186,7 @@ double kaprekate(container* c, int array[])
 				c->not_same = false;
 			}
 		}
-		if (c->not_same == false) { if (c->counter == 0) { c->loop_length++;} return c->counter;}
-		else if (c->not_same == true) { c->whole_number = smallest_value; c->counter++; return kaprekate(c, array);}
+		if (c->not_same == false) { return c->counter;}
+		else if (c->not_same == true) { c->whole_number = smallest_value; return kaprekate(c, array);}
 	}
 }
